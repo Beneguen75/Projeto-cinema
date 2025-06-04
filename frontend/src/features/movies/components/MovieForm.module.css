@@ -1,0 +1,55 @@
+.movieForm {
+  /* Se o formulário estiver dentro de um .card-body, o padding do Bootstrap já pode ser suficiente.
+     Mas se precisar de mais espaçamento interno específico para o form: */
+  /* padding: 1.5rem; */
+}
+
+.formErrorSummary {
+  font-size: 0.9rem;
+  /* Você pode adicionar mais estilos aqui, como um ícone de alerta */
+}
+
+.formGroup {
+  /* A classe mb-3 do Bootstrap já dá uma margem inferior.
+     Se precisar de um valor diferente, pode definir aqui. */
+  /* margin-bottom: 1.25rem; */
+}
+
+.formLabel {
+  font-weight: 500; /* Deixa o label um pouco mais forte */
+  margin-bottom: 0.35rem; /* Pequeno espaço entre o label e o input */
+  display: block; /* Garante que o margin-bottom funcione bem */
+  color: #4A5568; /* Um tom de cinza escuro para o texto do label */
+}
+
+/* Você pode adicionar estilos para os inputs, textareas, selects se quiser customizar
+   além do que o Bootstrap oferece. Por exemplo:
+.formControl {
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.formControl:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+*/
+
+/* Estilos para os botões, se quiser ir além das classes btn do Bootstrap */
+.buttonContainer {
+ /* A classe d-flex e gap-2 do Bootstrap já cuidam do alinhamento.
+    Pode adicionar margem superior se necessário. */
+ margin-top: 1rem;
+}
+
+/* .submitButton {
+  background-color: #28a745;
+  border-color: #28a745;
+} */
+
+/* .cancelButton {
+  background-color: #6c757d;
+  border-color: #6c757d;
+} */
