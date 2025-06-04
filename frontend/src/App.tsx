@@ -1,18 +1,31 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './router/AppRouter';
-
-// Importa o CSS do Bootstrap para estar disponível globalmente
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// Importe seu CSS global customizado, se tiver (ex: para o body, fontes, etc.)
-// Crie este arquivo se não existir: frontend/src/index.css
 import './index.css';
+
+// Importações para react-toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // CSS do react-toastify
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppRouter />
+      {/* Adicione o ToastContainer aqui, fora do Router mas dentro do BrowserRouter se quiser */}
+      {/* Ou pode ser no final do AppRouter, ou dentro de um MainLayout global */}
+      <ToastContainer
+        position="top-right" // Posição das notificações
+        autoClose={3000} // Fecha automaticamente após 3 segundos
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" // Ou "dark", "colored"
+      />
     </BrowserRouter>
   );
 };
