@@ -1,0 +1,35 @@
+# Ignorar dependências e arquivos de build de ambos os projetos
+**/node_modules
+**/dist
+**/build
+**/out
+
+# Arquivos de ambiente (geralmente contêm chaves de API e segredos)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos gerados pelo sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDEs (opcional, mas recomendado)
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Arquivos específicos do Vite
+*.local
+
+# Arquivo de declaração de tipos do Vite (gerado)
+vite-env.d.ts
