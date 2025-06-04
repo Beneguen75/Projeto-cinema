@@ -1,0 +1,130 @@
+.homePageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Adicionado para que ele ocupe o espaço dado pelo .content do MainLayout */
+  width: 100%; /* Ocupar toda a largura do .content do MainLayout */
+  padding: 2rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #eef2f7 0%, #f8f9fa 100%); /* Seu gradiente */
+}
+
+.welcomeContent {
+  /* Vamos tentar um fundo branco com um pouco mais de opacidade e um desfoque sutil */
+  background-color: rgba(255, 255, 255, 0.9); /* Um branco um pouco mais sólido, mas ainda levemente transparente */
+  /* Se o seu gradiente de fundo for muito claro, um card mais opaco pode ser melhor.
+     Se o gradiente for mais escuro, um card mais transparente pode ficar interessante. */
+
+  padding: 2.5rem 2rem;
+  border-radius: 16px; /* Bordas um pouco mais arredondadas para um look mais suave */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Sombra um pouco mais difundida */
+  max-width: 750px;
+  width: 100%;
+  
+  /* O backdrop-filter é opcional e depende do suporte do navegador.
+     Pode deixar ou remover se não estiver vendo efeito ou se causar problemas. */
+  backdrop-filter: blur(8px);
+  
+  /* Borda um pouco mais visível e suave */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  /* Transição para o hover */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.welcomeContent:hover {
+  transform: translateY(-5px); /* Levanta um pouco o card */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18); /* Sombra um pouco mais pronunciada no hover */
+}
+
+/* Certifique-se que as cores do texto dentro do card ainda têm bom contraste
+   com o novo background-color do .welcomeContent */
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50; /* Mantenha cores escuras se o fundo do card for claro */
+  margin-bottom: 0.75rem;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #34495e;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.decorativeImage { /* Estilo para a imagem, caso decida usá-la */
+  max-width: 120px; /* Deixa a imagem menor e mais sutil */
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.textBlock {
+  margin-bottom: 2.5rem; /* Espaço abaixo do bloco de texto */
+}
+
+.actionButtons {
+  display: grid; /* Usar Grid para os botões */
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Colunas responsivas */
+  gap: 1rem; /* Espaço entre os botões */
+  margin-top: 2rem; /* Espaço acima dos botões */
+}
+
+.actionButton {
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff; /* Cor do texto do botão */
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionButton:hover {
+  transform: translateY(-3px); /* Efeito de levantar no hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Cores específicas para os botões - você pode ajustar! */
+.filmesButton { background-color: #3498db; /* Azul */ }
+.filmesButton:hover { background-color: #2980b9; }
+
+.salasButton { background-color: #2ecc71; /* Verde */ }
+.salasButton:hover { background-color: #27ae60; }
+
+.sessoesButton { background-color: #f1c40f; /* Amarelo (texto escuro para contraste) */ color: #333; }
+.sessoesButton:hover { background-color: #f39c12; }
+
+.ingressosButton { background-color: #e74c3c; /* Vermelho/Laranja */ }
+.ingressosButton:hover { background-color: #c0392b; }
+
+
+/* Media Query para telas menores (ex: celulares) */
+@media (max-width: 768px) {
+  .welcomeContent {
+    padding: 2rem 1.5rem; /* Menos padding em telas menores */
+  }
+  .title {
+    font-size: 1.75rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .actionButtons {
+    grid-template-columns: 1fr; /* Botões em uma única coluna */
+  }
+}
