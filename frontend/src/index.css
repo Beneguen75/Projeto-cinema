@@ -1,16 +1,19 @@
+html,
+body,
+#root { /* #root é o ID padrão do div onde o React é montado */
+  height: 100%;
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove paddings padrão */
+}
+
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f6f9; /* Cor de fundo do seu body original */
+  /* O background-color do body pode ser uma cor de fallback ou a cor inicial do gradiente */
+  background-color: #f7f7f7; /* Exemplo, se o gradiente começar com essa cor */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* Adicione aqui outros estilos globais que você possa precisar */
+/* ... (outros estilos globais) ... */
