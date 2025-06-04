@@ -1,83 +1,89 @@
-import React, { useState } from 'react';
-import { Movie } from '../types'; // Importa a interface que acabamos de criar
+import React, { useState, useEffect } from 'react';
+import type { Movie } from '../types';
+import styles from './MovieForm.module.css'; // <--- IMPORTE O CSS MODULE AQUI
 
-// Props que o formulário pode receber (ex: um filme para edição, uma função de submit)
 interface MovieFormProps {
-  initialData?: Partial<Movie>; // Para preencher o formulário em caso de edição
+  initialData?: Partial<Movie>;
   onSubmit: (movie: Movie) => void;
-  onCancel?: () => void; // Opcional, para um botão de cancelar
+  onCancel?: () => void;
 }
 
 const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }) => {
-  // Estado para cada campo do formulário
-  // Usamos Partial<Movie> para permitir que initialData não tenha todos os campos
   const [titulo, setTitulo] = useState(initialData?.titulo || '');
   const [descricao, setDescricao] = useState(initialData?.descricao || '');
   const [genero, setGenero] = useState(initialData?.genero || '');
   const [classificacao, setClassificacao] = useState(initialData?.classificacao || '');
-  const [duracao, setDuracao] = useState<number | string>(initialData?.duracao || ''); // Pode ser string no input
+  const [duracao, setDuracao] = useState<number | string>(initialData?.duracao || '');
   const [dataEstreia, setDataEstreia] = useState(initialData?.dataEstreia || '');
+  const [posterUrl, setPosterUrl] = useState(initialData?.posterUrl || '');
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // Validação do formulário (baseada no seu script-filmes.js)
+  // ... (sua função validateForm permanece a mesma, mas pode adicionar validação para posterUrl se desejar)
   const validateForm = (): boolean => {
-    const newErrors: Record<string, string> = {};
-    if (!titulo.trim()) newErrors.titulo = "Título é obrigatório.";
-    if (!descricao.trim()) newErrors.descricao = "Descrição é obrigatória.";
-    if (!genero) newErrors.genero = "Gênero é obrigatório.";
-    if (!classificacao) newErrors.classificacao = "Classificação é obrigatória.";
+     const newErrors: Record<string, string> = {};
+     if (!titulo.trim()) newErrors.titulo = "Título é obrigatório.";
+     if (!descricao.trim()) newErrors.descricao = "Descrição é obrigatória.";
+     if (!genero) newErrors.genero = "Gênero é obrigatório.";
+     if (!classificacao) newErrors.classificacao = "Classificação é obrigatória.";
 
-    const duracaoNum = Number(duracao);
-    if (isNaN(duracaoNum) || duracaoNum < 40) {
-      newErrors.duracao = "Duração deve ser um número e no mínimo 40 minutos.";
-    }
-    if (!dataEstreia) {
-      newErrors.dataEstreia = "Data de estreia é obrigatória.";
-    } else {
-      // Validação simples de data (pode ser melhorada)
-      // A validação original comparava com a data atual,
-      // faremos isso ao submeter ou com uma lib de validação.
-    }
+     const duracaoNum = Number(duracao);
+     if (isNaN(duracaoNum) || duracaoNum < 40) {
+       newErrors.duracao = "Duração deve ser um número e no mínimo 40 minutos.";
+     }
+     if (!dataEstreia) {
+       newErrors.dataEstreia = "Data de estreia é obrigatória.";
+     } else {
+       const hoje = new Date().toISOString().split("T")[0];
+       if (dataEstreia < hoje) {
+         newErrors.dataEstreia = "A data de estreia não pode ser anterior ao dia atual.";
+       }
+     }
+     // Exemplo de validação para posterUrl (opcional)
+     // if (posterUrl && !posterUrl.match(/^(\/|https?:\/\/)/i)) {
+     //   newErrors.posterUrl = "URL do cartaz inválida. Deve ser um caminho local (ex: /cartazes/img.jpg) ou uma URL http(s).";
+     // }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+     setErrors(newErrors);
+     return Object.keys(newErrors).length === 0;
+   };
 
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault(); // Previne o recarregamento da página
+    event.preventDefault();
     if (!validateForm()) {
       return;
     }
-
     const movieData: Movie = {
       titulo,
       descricao,
       genero,
       classificacao,
-      duracao: Number(duracao), // Converte para número
+      duracao: Number(duracao),
       dataEstreia,
+      posterUrl,
     };
-    onSubmit(movieData); // Chama a função passada por props
-
-    // Limpar formulário (opcional, depende se o form some após submit)
-    // setTitulo(''); setDescricao(''); // etc.
+    onSubmit(movieData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-4 rounded shadow-sm">
-      {/* Mensagens de erro globais do formulário poderiam ir aqui */}
+    // Aplica a classe do CSS Module ao form.
+    // Mantemos as classes do Bootstrap para estrutura base.
+    <form onSubmit={handleSubmit} className={`${styles.movieForm} bg-white p-4 rounded shadow-sm`}>
       {Object.keys(errors).length > 0 && (
-        <div className="alert alert-danger mb-3">
+        // Aplica classe do CSS Module para o sumário de erros
+        <div className={`${styles.formErrorSummary} alert alert-danger mb-3`}>
           Por favor, corrija os erros indicados.
         </div>
       )}
 
-      <div className="mb-3">
-        <label htmlFor="titulo" className="form-label">Título</label>
+      {/* Exemplo de como aplicar classes do module a um form group e label */}
+      <div className={`${styles.formGroup} mb-3`}>
+        <label htmlFor="titulo" className={`${styles.formLabel} form-label`}>Título</label>
         <input
           type="text"
+          // Se você definiu .formControl no seu module.css e quer usá-lo em vez do Bootstrap:
+          // className={`${styles.formControl} ${errors.titulo ? 'is-invalid' : ''}`}
           className={`form-control ${errors.titulo ? 'is-invalid' : ''}`}
           id="titulo"
           value={titulo}
@@ -87,8 +93,8 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
         {errors.titulo && <div className="invalid-feedback">{errors.titulo}</div>}
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="descricao" className="form-label">Descrição</label>
+      <div className={`${styles.formGroup} mb-3`}>
+        <label htmlFor="descricao" className={`${styles.formLabel} form-label`}>Descrição</label>
         <textarea
           className={`form-control ${errors.descricao ? 'is-invalid' : ''}`}
           id="descricao"
@@ -100,75 +106,74 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
         {errors.descricao && <div className="invalid-feedback">{errors.descricao}</div>}
       </div>
 
-      <div className="mb-3">
-        <label htmlFor="genero" className="form-label">Gênero</label>
-        <select
-          className={`form-select ${errors.genero ? 'is-invalid' : ''}`}
-          id="genero"
-          value={genero}
-          onChange={(e) => setGenero(e.target.value)}
-          required
-        >
-          <option value="">Selecione...</option>
-          <option value="Ação">Ação</option>
-          <option value="Aventura">Aventura</option>
-          <option value="Comédia">Comédia</option>
-          <option value="Drama">Drama</option>
-          <option value="Fantasia">Fantasia</option>
-          <option value="Terror">Terror</option>
-          <option value="Ficção Científica">Ficção Científica</option>
-        </select>
-        {errors.genero && <div className="invalid-feedback">{errors.genero}</div>}
-      </div>
+     {/* Aplique styles.formGroup e styles.formLabel aos outros campos também... */}
+     {/* Gênero */}
+     <div className={`${styles.formGroup} mb-3`}>
+         <label htmlFor="genero" className={`${styles.formLabel} form-label`}>Gênero</label>
+         <select
+             className={`form-select ${errors.genero ? 'is-invalid' : ''}`}
+             id="genero" value={genero} onChange={(e) => setGenero(e.target.value)} required>
+             <option value="">Selecione...</option>
+             <option value="Ação">Ação</option>
+             <option value="Aventura">Aventura</option>
+             <option value="Comédia">Comédia</option>
+             <option value="Drama">Drama</option>
+             <option value="Fantasia">Fantasia</option>
+             <option value="Terror">Terror</option>
+             <option value="Ficção Científica">Ficção Científica</option>
+         </select>
+         {errors.genero && <div className="invalid-feedback">{errors.genero}</div>}
+     </div>
 
-      <div className="mb-3">
-        <label htmlFor="classificacao" className="form-label">Classificação Indicativa</label>
-        <select
-          className={`form-select ${errors.classificacao ? 'is-invalid' : ''}`}
-          id="classificacao"
-          value={classificacao}
-          onChange={(e) => setClassificacao(e.target.value)}
-          required
-        >
-          <option value="">Selecione...</option>
-          <option value="Livre">Livre</option>
-          <option value="10 anos">10 anos</option>
-          <option value="12 anos">12 anos</option>
-          <option value="14 anos">14 anos</option>
-          <option value="16 anos">16 anos</option>
-          <option value="18 anos">18 anos</option>
-        </select>
-        {errors.classificacao && <div className="invalid-feedback">{errors.classificacao}</div>}
-      </div>
+     {/* Classificação */}
+     <div className={`${styles.formGroup} mb-3`}>
+         <label htmlFor="classificacao" className={`${styles.formLabel} form-label`}>Classificação Indicativa</label>
+         <select
+             className={`form-select ${errors.classificacao ? 'is-invalid' : ''}`}
+             id="classificacao" value={classificacao} onChange={(e) => setClassificacao(e.target.value)} required>
+             <option value="">Selecione...</option>
+             <option value="Livre">Livre</option>
+             <option value="10 anos">10 anos</option>
+             <option value="12 anos">12 anos</option>
+             <option value="14 anos">14 anos</option>
+             <option value="16 anos">16 anos</option>
+             <option value="18 anos">18 anos</option>
+         </select>
+         {errors.classificacao && <div className="invalid-feedback">{errors.classificacao}</div>}
+     </div>
 
-      <div className="mb-3">
-        <label htmlFor="duracao" className="form-label">Duração (minutos)</label>
-        <input
-          type="number"
-          className={`form-control ${errors.duracao ? 'is-invalid' : ''}`}
-          id="duracao"
-          value={duracao}
-          onChange={(e) => setDuracao(e.target.value)}
-          min="40"
-          required
-        />
-        {errors.duracao && <div className="invalid-feedback">{errors.duracao}</div>}
-      </div>
+     {/* Duração */}
+     <div className={`${styles.formGroup} mb-3`}>
+         <label htmlFor="duracao" className={`${styles.formLabel} form-label`}>Duração (minutos)</label>
+         <input
+             type="number" className={`form-control ${errors.duracao ? 'is-invalid' : ''}`}
+             id="duracao" value={duracao} onChange={(e) => setDuracao(e.target.value)} min="40" required
+         />
+         {errors.duracao && <div className="invalid-feedback">{errors.duracao}</div>}
+     </div>
 
-      <div className="mb-3">
-        <label htmlFor="data-estreia" className="form-label">Data de Estreia</label>
-        <input
-          type="date"
-          className={`form-control ${errors.dataEstreia ? 'is-invalid' : ''}`}
-          id="data-estreia"
-          value={dataEstreia}
-          onChange={(e) => setDataEstreia(e.target.value)}
-          required
-        />
-        {errors.dataEstreia && <div className="invalid-feedback">{errors.dataEstreia}</div>}
-      </div>
+     {/* Data de Estreia */}
+     <div className={`${styles.formGroup} mb-3`}>
+         <label htmlFor="data-estreia" className={`${styles.formLabel} form-label`}>Data de Estreia</label>
+         <input
+             type="date" className={`form-control ${errors.dataEstreia ? 'is-invalid' : ''}`}
+             id="data-estreia" value={dataEstreia} onChange={(e) => setDataEstreia(e.target.value)} required
+         />
+         {errors.dataEstreia && <div className="invalid-feedback">{errors.dataEstreia}</div>}
+     </div>
 
-      <div className="text-end d-flex gap-2 justify-content-end">
+     {/* URL do Cartaz */}
+     <div className={`${styles.formGroup} mb-3`}>
+         <label htmlFor="posterUrl" className={`${styles.formLabel} form-label`}>URL do Cartaz (Poster)</label>
+         <input
+             type="text" className={`form-control ${errors.posterUrl ? 'is-invalid' : ''}`}
+             id="posterUrl" value={posterUrl} onChange={(e) => setPosterUrl(e.target.value)}
+         />
+         {errors.posterUrl && <div className="invalid-feedback">{errors.posterUrl}</div>}
+     </div>
+
+
+      <div className={`${styles.buttonContainer} text-end d-flex gap-2 justify-content-end`}>
         {onCancel && (
           <button type="button" className="btn btn-secondary" onClick={onCancel}>
             Cancelar
