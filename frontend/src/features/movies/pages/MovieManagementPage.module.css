@@ -1,0 +1,20 @@
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; /* Mais espaço abaixo do cabeçalho */
+  padding-bottom: 1rem; /* Espaço interno abaixo da linha */
+  border-bottom: 2px solid #e9ecef; /* Linha divisória sutil */
+}
+
+.pageTitle {
+  font-size: 2rem; /* Tamanho maior para o título da página */
+  font-weight: 600;
+  color: #343a40; /* Cor escura para o título */
+}
+
+.addButton {
+  /* Se quiser customizar o botão além do Bootstrap */
+  /* padding: 0.5rem 1rem; */
+  /* font-weight: 500; */
+}
