@@ -1,0 +1,59 @@
+.movieCard {
+  border: 1px solid #e0e0e0; /* Borda sutil */
+  border-radius: 8px; /* Bordas mais arredondadas */
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+}
+
+.movieCard:hover {
+  transform: translateY(-5px); /* Efeito de levantar sutilmente */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; /* Sombra mais pronunciada */
+}
+
+.movieCardImgTop {
+  height: 300px; /* Altura fixa para a imagem do cartaz */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  /* Não precisa de border-radius aqui se .movieCard tem overflow: hidden */
+}
+
+.movieCardImgPlaceholder {
+ height: 300px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: #f0f0f0;
+ color: #aaa;
+ font-style: italic;
+}
+
+.movieCardBody {
+  padding: 1rem; /* Espaçamento interno do corpo do card */
+}
+
+.movieCardTitle {
+  font-size: 1.1rem; /* Tamanho um pouco maior para o título */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333; /* Cor mais escura para o título */
+}
+
+.movieCardText {
+  font-size: 0.85rem; /* Tamanho um pouco menor para os detalhes */
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+
+.movieCardText strong {
+  color: #222; /* Destaque para os labels */
+}
+
+.movieCardActions {
+  border-top: 1px solid #f0f0f0; /* Linha sutil acima dos botões */
+  padding-top: 0.75rem !important; /* !important para sobrescrever o pt-2 do Bootstrap se necessário */
+  margin-top: 0.75rem !important; /* Espaçamento acima dos botões */
+}
+
+.actionButton {
+  font-size: 0.8rem; /* Botões um pouco menores */
+  /* Adicione mais estilos customizados para os botões se desejar */
+}
