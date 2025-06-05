@@ -1,0 +1,46 @@
+/* frontend/src/features/rooms/components/SeatDisplay.module.css */
+.seatDisplayContainer {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  overflow-x: auto; /* Permite rolagem horizontal se os assentos não couberem */
+}
+
+.seatGrid {
+  display: grid;
+  gap: 4px;
+  justify-content: center;
+}
+
+.seat {
+  width: 25px; /* Largura do assento */
+  height: 25px; /* Altura do assento */
+  background-color: #28a745; /* Verde para assento disponível (similar ao Bootstrap success) */
+  color: white;
+  border: 1px solid #1e7e34; /* Borda um pouco mais escura */
+  border-radius: 3px; /* Bordas levemente arredondadas */
+  display: flex; /* Para centralizar o texto do label dentro do assento */
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem; /* Tamanho pequeno para o label do assento */
+  font-weight: bold;
+  cursor: default; /* Por enquanto, não são clicáveis */
+  user-select: none; /* Para não selecionar o texto do label ao clicar/arrastar */
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Estilos para assentos ocupados (para uso futuro) */
+.seat.occupied { /* Você usaria className={`${styles.seat} ${styles.occupied}`} */
+  background-color: #dc3545; /* Vermelho (Bootstrap danger) */
+  border-color: #b02a37;
+  cursor: not-allowed;
+}
+
+/* Estilos para assentos selecionados (para uso futuro) */
+.seat.selected { /* Você usaria className={`${styles.seat} ${styles.selected}`} */
+  background-color: #0d6efd; /* Azul (Bootstrap primary) */
+  border-color: #0a58ca;
+}
