@@ -1,0 +1,56 @@
+.roomCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px; /* Bordas arredondadas */
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Para que elementos filhos não ultrapassem as bordas arredondadas */
+  background-color: #fff; /* Fundo branco para o card */
+}
+
+.roomCard:hover {
+  transform: translateY(-5px); /* Efeito de levantar no hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; /* Sombra mais pronunciada */
+}
+
+.roomCardBody {
+  padding: 1.25rem; /* Espaçamento interno */
+}
+
+.roomCardTitle {
+  font-size: 1.15rem; /* Tamanho do título do card */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.roomCardText {
+  font-size: 0.9rem; /* Tamanho do texto dos detalhes */
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.roomCardText strong {
+  color: #222; /* Destaque para os labels "Tipo:", "Capacidade:" */
+}
+
+.seatsPlaceholderContainer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px dashed #ced4da; /* Borda tracejada para o placeholder */
+  border-radius: 4px;
+  background-color: #f8f9fa; /* Fundo levemente acinzentado para o placeholder */
+  text-align: center;
+  font-size: 0.85em;
+  color: #6c757d; /* Cor do texto do placeholder */
+}
+
+.roomCardActions {
+  border-top: 1px solid #f0f0f0; /* Linha divisória acima dos botões */
+  padding-top: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+.actionButton {
+  font-size: 0.8rem;
+  /* Outros estilos para os botões se necessário */
+}
