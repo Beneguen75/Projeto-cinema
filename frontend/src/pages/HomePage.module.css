@@ -12,9 +12,8 @@
 
 .welcomeContent {
   /* Vamos tentar um fundo branco com um pouco mais de opacidade e um desfoque sutil */
-  background-color: rgba(255, 255, 255, 0.9); /* Um branco um pouco mais sólido, mas ainda levemente transparente */
-  /* Se o seu gradiente de fundo for muito claro, um card mais opaco pode ser melhor.
-     Se o gradiente for mais escuro, um card mais transparente pode ficar interessante. */
+  background-color: rgba(255, 255, 255, 0.9); 
+  
 
   padding: 2.5rem 2rem;
   border-radius: 16px; /* Bordas um pouco mais arredondadas para um look mais suave */
@@ -25,11 +24,7 @@
   /* O backdrop-filter é opcional e depende do suporte do navegador.
      Pode deixar ou remover se não estiver vendo efeito ou se causar problemas. */
   backdrop-filter: blur(8px);
-  
-  /* Borda um pouco mais visível e suave */
   border: 1px solid rgba(255, 255, 255, 0.2);
-
-  /* Transição para o hover */
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -38,12 +33,10 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18); /* Sombra um pouco mais pronunciada no hover */
 }
 
-/* Certifique-se que as cores do texto dentro do card ainda têm bom contraste
-   com o novo background-color do .welcomeContent */
 .title {
   font-size: 2rem;
   font-weight: 700;
-  color: #2c3e50; /* Mantenha cores escuras se o fundo do card for claro */
+  color: #2c3e50; 
   margin-bottom: 0.75rem;
 }
 
@@ -73,58 +66,83 @@
 }
 
 .actionButtons {
-  display: grid; /* Usar Grid para os botões */
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Colunas responsivas */
-  gap: 1rem; /* Espaço entre os botões */
-  margin-top: 2rem; /* Espaço acima dos botões */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem; /* Um pouco mais de espaço acima dos botões */
 }
 
 .actionButton {
-  padding: 0.8rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-radius: 8px;
+  background-color: transparent; /* Fundo transparente inicialmente */
+  border: 2px solid; /* Borda sólida, cor será definida por classes modificadoras */
+  /* A cor do texto também será definida por classes modificadoras */
+  padding: 0.75rem 1.25rem; /* Ajuste o padding conforme necessário */
+  font-size: 0.9rem; /* Fonte um pouco menor para acomodar ícone */
+  font-weight: 600; /* Texto do botão um pouco mais forte */
+  border-radius: 50px; /* Formato "pill" */
   text-decoration: none;
-  color: #fff; /* Cor do texto do botão */
-  border: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.6rem; /* Espaço entre o ícone e o texto */
+}
+
+.buttonIcon {
+  font-size: 1.1em; /* Tamanho do ícone relativo ao texto do botão */
+  /* margin-right: 0.5rem; /* Alternativa ao 'gap' no .actionButton */
 }
 
 .actionButton:hover {
-  transform: translateY(-3px); /* Efeito de levantar no hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: #fff; /* Texto branco no hover para a maioria dos botões */
+  transform: translateY(-3px) scale(1.03); /* Efeito de levantar e aumentar um pouco */
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); /* Sombra mais elaborada */
 }
 
-/* Cores específicas para os botões - você pode ajustar! */
-.filmesButton { background-color: #3498db; /* Azul */ }
-.filmesButton:hover { background-color: #2980b9; }
+/* Cores específicas para cada botão (borda e texto, e fundo no hover) */
+.filmesButton {
+  border-color: #3498db; /* Azul */
+  color: #3498db;
+}
+.filmesButton:hover {
+  background-color: #3498db;
+  /* color: #fff; Já definido no .actionButton:hover */
+}
 
-.salasButton { background-color: #2ecc71; /* Verde */ }
-.salasButton:hover { background-color: #27ae60; }
+.salasButton {
+  border-color: #2ecc71; /* Verde */
+  color: #2ecc71;
+}
+.salasButton:hover {
+  background-color: #2ecc71;
+}
 
-.sessoesButton { background-color: #f1c40f; /* Amarelo (texto escuro para contraste) */ color: #333; }
-.sessoesButton:hover { background-color: #f39c12; }
+.sessoesButton {
+  border-color: #f1c40f; /* Amarelo */
+  color: #f1c40f;
+}
+.sessoesButton:hover {
+  background-color: #f1c40f;
+  color: #333; /* Texto escuro para contraste com fundo amarelo */
+}
 
-.ingressosButton { background-color: #e74c3c; /* Vermelho/Laranja */ }
-.ingressosButton:hover { background-color: #c0392b; }
+.ingressosButton {
+  border-color: #e74c3c; /* Vermelho/Laranja */
+  color: #e74c3c;
+}
+.ingressosButton:hover {
+  background-color: #e74c3c;
+}
 
-
-/* Media Query para telas menores (ex: celulares) */
+/* Media Query para telas menores (pode precisar de ajustes) */
 @media (max-width: 768px) {
-  .welcomeContent {
-    padding: 2rem 1.5rem; /* Menos padding em telas menores */
-  }
-  .title {
-    font-size: 1.75rem;
-  }
-  .subtitle {
-    font-size: 1rem;
-  }
+  /* ... (estilos responsivos anteriores para .welcomeContent, .title, .subtitle) ... */
   .actionButtons {
     grid-template-columns: 1fr; /* Botões em uma única coluna */
+    gap: 0.75rem; /* Espaço menor entre botões empilhados */
+  }
+  .actionButton {
+    padding: 0.8rem 1rem; /* Ajusta padding para botões empilhados */
   }
 }
