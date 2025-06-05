@@ -1,4 +1,13 @@
-/* frontend/src/features/rooms/pages/RoomManagementPage.module.css */
+/* Adicione esta classe se ainda não existir, ou adapte-a */
+.pageContainer {
+  padding: 1.5rem; /* Espaçamento interno nas laterais, em cima e embaixo */
+  max-width: 1200px; /* Largura máxima do conteúdo da página */
+  margin-left: auto; /* Centraliza o container se a tela for maior que max-width */
+  margin-right: auto; /* Centraliza o container se a tela for maior que max-width */
+  width: 100%; /* Garante que o container ocupe a largura disponível para o padding funcionar */
+}
+
+/* Seus estilos existentes para o cabeçalho devem permanecer aqui */
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -15,12 +24,5 @@
 }
 
 .addButton {
-  /* Estilos para o botão de adicionar, se necessário */
-}
-
-.pageWrapper { /* Novo container para a página inteira */
-  padding: 1.5rem; /* Adiciona espaçamento nas laterais e em cima/baixo */
-  max-width: 1200px; /* Define uma largura máxima para o conteúdo */
-  margin-left: auto; /* Centraliza o container na tela */
-  margin-right: auto; /* Centraliza o container na tela */
+  /* Estilos para o botão "Nova Sala", se houver */
 }
