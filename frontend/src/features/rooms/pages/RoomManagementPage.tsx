@@ -124,7 +124,6 @@ const RoomManagementPage: React.FC = () => {
                room={room}
                onEdit={handleEditRoom}
                onDelete={handleDeleteRoom}
-               renderSeatsPlaceholder={renderRoomSeatsPlaceholder}
              />
           </div>
         ))}
