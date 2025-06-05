@@ -2,7 +2,8 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import MainLayout from '../layouts/MainLayout';
-import MovieManagementPage from '../features/movies/pages/MovieManagementPage'; // Importe a nova página
+import MovieManagementPage from '../features/movies/pages/MovieManagementPage';
+import RoomManagementPage from '../features/rooms/pages/RoomManagementPage';
 
 // Placeholder para páginas futuras
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
@@ -25,7 +26,7 @@ const AppRouter: React.FC = () => {
 
       <Route
         path="/salas/cadastro"
-        element={<MainLayout><PlaceholderPage title="Cadastro de Salas" /></MainLayout>}
+        element={<MainLayout><RoomManagementPage /></MainLayout>}
       />
       <Route
         path="/sessoes/cadastro"
