@@ -1,11 +1,13 @@
+/* frontend/src/features/rooms/components/RoomCard.module.css */
 .roomCard {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden;
   background-color: #fff;
-  /* Importante: garantir que o card possa ter altura flexível baseada no conteúdo */
-  display: flex; /* Adicionado para permitir que .roomCardBody cresça */
-  flex-direction: column; /* Adicionado */
+  display: flex; /* Permite que o card use flexbox para seus filhos */
+  flex-direction: column; /* Empilha os filhos do card verticalmente */
+  height: 100%; /* Opcional, mas ajuda se Bootstrap h-100 não for suficiente */
 }
 
 .roomCard:hover {
@@ -15,9 +17,9 @@
 
 .roomCardBody {
   padding: 1.25rem;
-  flex-grow: 1; /* Adicionado para fazer o corpo do card ocupar espaço */
-  display: flex; /* Adicionado */
+  display: flex; /* Adicionado para controle interno */
   flex-direction: column; /* Adicionado */
+  flex-grow: 1; /* Faz o corpo do card ocupar o espaço disponível */
 }
 
 .roomCardTitle {
@@ -31,7 +33,7 @@
   font-size: 0.9rem;
   color: #555;
   margin-bottom: 0.5rem;
-  line-height: 1.4; /* Adicionado para melhor legibilidade */
+  line-height: 1.4;
 }
 
 .roomCardText strong {
@@ -40,7 +42,7 @@
 
 .seatsPlaceholderContainer {
   margin-top: 0.75rem;
-  margin-bottom: 1rem; /* Aumentar um pouco a margem inferior */
+  margin-bottom: 1rem;
   padding: 0.75rem;
   border: 1px dashed #ced4da;
   border-radius: 4px;
@@ -48,17 +50,16 @@
   text-align: center;
   font-size: 0.85em;
   color: #6c757d;
-  min-height: 50px; /* Dar uma altura mínima para o placeholder */
-  display: flex; /* Para centralizar o texto se necessário */
-  align-items: center; /* Para centralizar o texto se necessário */
-  justify-content: center; /* Para centralizar o texto se necessário */
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .roomCardActions {
   border-top: 1px solid #f0f0f0;
   padding-top: 1rem !important;
-  margin-top: auto !important; /* Mudado de margin-top: 1rem para margin-top: auto */
-                             /* Isso empurra os botões para o final do card se o card for flex column */
+  margin-top: auto !important; /* Empurra os botões para o final do card */
 }
 
 .actionButton {
