@@ -17,3 +17,10 @@
 .addButton {
   /* Estilos para o botão de adicionar, se necessário */
 }
+
+.pageWrapper { /* Novo container para a página inteira */
+  padding: 1.5rem; /* Adiciona espaçamento nas laterais e em cima/baixo */
+  max-width: 1200px; /* Define uma largura máxima para o conteúdo */
+  margin-left: auto; /* Centraliza o container na tela */
+  margin-right: auto; /* Centraliza o container na tela */
+}
