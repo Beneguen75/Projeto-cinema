@@ -5,6 +5,7 @@ import type { Movie } from '../types';
 import { toast } from 'react-toastify';
 import stylesPage from './MovieManagementPage.module.css';
 
+
 // TEMP: Funções para localStorage (simulando persistência)
 const getMoviesFromStorage = (): Movie[] => {
   const storedMovies = localStorage.getItem('movies_react_temp');
@@ -64,20 +65,20 @@ const MovieManagementPage: React.FC = () => {
   };
 
   return (
-    <div className={stylesPage.pageContainer}> {/* <--- Aplicar .pageContainer */}
-      <div className={stylesPage.pageHeader}> {/* <--- Aplicar .pageHeader */}
-        <h1 className={stylesPage.pageTitle}>Gerenciador de Filmes</h1> {/* <--- Aplicar .pageTitle */}
-        {!showForm && (
-            <button
-              className={`btn btn-primary ${stylesPage.addButton}`}
-              onClick={() => {
-                setEditingMovie(undefined);
-                setShowForm(true);
-              }}
-            >
-              Cadastrar Novo Filme
-            </button>
-          )}
+    <div className={stylesPage.pageContainer}>
+    <div className={stylesPage.pageHeader}>
+      <h1 className={stylesPage.pageTitle}>Gerenciador de Filmes</h1>
+      {!showForm && (
+        <button
+          className={`btn btn-primary ${stylesPage.addButton}`}
+          onClick={() => {
+            setEditingMovie(undefined);
+            setShowForm(true);
+          }}
+        >
+          Cadastrar Novo Filme
+        </button>
+      )}
     </div>
 
       {showForm && (
