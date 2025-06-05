@@ -1,20 +1,27 @@
+.pageContainer { /* Ou .pageWrapper, mantenha o nome consistente com o que você usa no JSX */
+  padding: 1.5rem; /* Adiciona espaçamento nas laterais e em cima/baixo */
+  max-width: 1200px; /* Define uma largura máxima para o conteúdo */
+  margin-left: auto; /* Centraliza o container na tela */
+  margin-right: auto; /* Centraliza o container na tela */
+  width: 100%; /* Importante para o padding e margin: auto funcionarem bem */
+}
+
+/* Seus outros estilos como .pageHeader, .pageTitle, .addButton permanecem aqui */
 .pageHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem; /* Mais espaço abaixo do cabeçalho */
-  padding-bottom: 1rem; /* Espaço interno abaixo da linha */
-  border-bottom: 2px solid #e9ecef; /* Linha divisória sutil */
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
 }
 
 .pageTitle {
-  font-size: 2rem; /* Tamanho maior para o título da página */
+  font-size: 2rem;
   font-weight: 600;
-  color: #343a40; /* Cor escura para o título */
+  color: #343a40;
 }
 
 .addButton {
-  /* Se quiser customizar o botão além do Bootstrap */
-  /* padding: 0.5rem 1rem; */
-  /* font-weight: 500; */
+  /* Estilos para o botão */
 }
