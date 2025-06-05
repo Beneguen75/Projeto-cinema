@@ -85,14 +85,12 @@ const RoomManagementPage: React.FC = () => {
 
 
   return (
-    // Se você criar RoomManagementPage.module.css, use as classes aqui
-    // <div className={stylesPage.pageContainer}>
-    <div>
-      <div className="d-flex justify-content-between align-items-center mb-4"> {/* Ou stylesPage.pageHeader */}
-        <h1>Gerenciador de Salas</h1> {/* Ou stylesPage.pageTitle */}
+    <div className={stylesPage.pageWrapper}> {/* <--- Adiciona o wrapper aqui */}
+      <div className={stylesPage.pageHeader}>
+        <h1 className={stylesPage.pageTitle}>Gerenciador de Salas</h1>
         {!showForm && (
           <button
-            className="btn btn-primary" /* Ou `btn btn-primary ${stylesPage.addButton}` */
+            className={`btn btn-primary ${stylesPage.addButton}`}
             onClick={() => { setEditingRoom(undefined); setShowForm(true); }}
           >
             Nova Sala
