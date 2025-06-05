@@ -85,7 +85,7 @@ const RoomManagementPage: React.FC = () => {
 
 
   return (
-    <div className={stylesPage.pageWrapper}> {/* <--- Adiciona o wrapper aqui */}
+    <div className={stylesPage.pageContainer}> {/* <--- Adiciona o wrapper aqui */}
       <div className={stylesPage.pageHeader}>
         <h1 className={stylesPage.pageTitle}>Gerenciador de Salas</h1>
         {!showForm && (
@@ -120,12 +120,11 @@ const RoomManagementPage: React.FC = () => {
       <div className="row">
         {rooms.map((room) => (
           <div key={room.id || room.nome} className="col-md-6 col-lg-4 mb-4">
-            {/* Card Simples para a Sala - Podemos criar um RoomCard.tsx depois */}
             <RoomCard
                room={room}
                onEdit={handleEditRoom}
                onDelete={handleDeleteRoom}
-               renderSeatsPlaceholder={renderRoomSeatsPlaceholder} // Passa a função como prop
+               renderSeatsPlaceholder={renderRoomSeatsPlaceholder}
              />
           </div>
         ))}
