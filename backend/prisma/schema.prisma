@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+   binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Lê a URL do banco do seu arquivo .env
+}
+
+// AQUI COMEÇA A DEFINIÇÃO DOS NOSSOS MODELOS
+
+// Modelo para Filmes
+model Movie {
+  id            String    @id @default(uuid()) // Chave primária, será um UUID gerado automaticamente
+  titulo        String
+  descricao     String
+  genero        String
+  classificacao String
+  duracao       Int       // Em minutos
+  dataEstreia   DateTime  // Armazena a data (e hora, se necessário)
+  posterUrl     String?   // O '?' indica que este campo é opcional
+  createdAt     DateTime  @default(now()) // Armazena a data de criação do registro
+  updatedAt     DateTime  @updatedAt      // Armazena a data da última atualização
+}
