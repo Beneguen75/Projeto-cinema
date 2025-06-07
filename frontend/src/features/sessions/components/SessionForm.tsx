@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import type { Session } from '../types';
-import type { Movie } from '../../movies/types'; // Importar tipo Movie
-import type { Room } from '../../rooms/types';   // Importar tipo Room
-import styles from './SessionForm.module.css';   // Crie este arquivo depois
+import type { Movie } from '../../movies/types';
+import type { Room } from '../../rooms/types';
+import styles from './SessionForm.module.css';
 
 interface SessionFormProps {
   initialData?: Partial<Session>;
-  onSubmit: (session: Omit<Session, 'id'>) => void; // Omit 'id' pois será gerado ao criar
+  onSubmit: (session: Omit<Session, 'id'>) => void;
   onCancel?: () => void;
-  // Precisaremos passar os filmes e salas disponíveis para os selects
   availableMovies: Movie[];
   availableRooms: Room[];
 }
@@ -32,8 +31,6 @@ const SessionForm: React.FC<SessionFormProps> = ({
     if (initialData) {
       setFilmeId(initialData.filmeId || '');
       setSalaId(initialData.salaId || '');
-      // Formatar dataHora para o input datetime-local se necessário
-      // O valor do input datetime-local precisa ser no formato "YYYY-MM-DDTHH:mm"
       const initialDateTime = initialData.dataHora ? initialData.dataHora.substring(0, 16) : '';
       setDataHora(initialDateTime);
       setPreco(initialData.preco || '');
@@ -53,7 +50,6 @@ const SessionForm: React.FC<SessionFormProps> = ({
     }
     if (!idioma) newErrors.idioma = "Idioma é obrigatório.";
     if (!formato) newErrors.formato = "Formato é obrigatório.";
-    // Adicionar mais validações (ex: dataHora não pode ser no passado, etc.)
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -66,7 +62,7 @@ const SessionForm: React.FC<SessionFormProps> = ({
     onSubmit({
       filmeId,
       salaId,
-      dataHora: new Date(dataHora).toISOString(), // Garante formato ISO completo
+      dataHora: new Date(dataHora).toISOString(),
       preco: Number(preco),
       idioma,
       formato,
@@ -126,7 +122,7 @@ const SessionForm: React.FC<SessionFormProps> = ({
           type="datetime-local"
           id="sessionDataHora"
           className={`form-control ${errors.dataHora ? 'is-invalid' : ''}`}
-          value={dataHora} // Deve estar no formato "YYYY-MM-DDTHH:mm"
+          value={dataHora}
           onChange={(e) => setDataHora(e.target.value)}
         />
         {errors.dataHora && <div className="invalid-feedback">{errors.dataHora}</div>}
