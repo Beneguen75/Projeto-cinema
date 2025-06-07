@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, } from 'react';
 import type { Movie } from '../types';
 import styles from './MovieForm.module.css'; // <--- IMPORTE O CSS MODULE AQUI
 
