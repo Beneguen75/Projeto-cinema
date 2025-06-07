@@ -65,25 +65,6 @@ const RoomManagementPage: React.FC = () => {
     setEditingRoom(undefined);
   };
 
-  // No seu `cadastro-salas.html` original, havia uma visualização de assentos.
-  // Vamos adicionar um placeholder para isso no card da sala.
-  // A implementação real da visualização dos assentos será um próximo passo interessante.
-  const renderRoomSeatsPlaceholder = (capacidade: number) => {
-    // Apenas um indicativo visual simples por enquanto
-    return (
-      <div style={{ 
-        marginTop: '10px', 
-        padding: '10px', 
-        border: '1px dashed #ccc', 
-        fontSize: '0.8em',
-        color: '#777'
-      }}>
-        Visualização de {capacidade} assentos (a ser implementada)
-      </div>
-    );
-  };
-
-
   return (
     <div className={stylesPage.pageContainer}> {/* <--- Adiciona o wrapper aqui */}
       <div className={stylesPage.pageHeader}>
