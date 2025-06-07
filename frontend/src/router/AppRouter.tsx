@@ -4,8 +4,8 @@ import HomePage from '../pages/HomePage';
 import MainLayout from '../layouts/MainLayout';
 import MovieManagementPage from '../features/movies/pages/MovieManagementPage';
 import RoomManagementPage from '../features/rooms/pages/RoomManagementPage';
+import SessionManagementPage from '../features/sessions/pages/SessionManagementPage';
 
-// Placeholder para páginas futuras
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
   <div>
     <h2>{title}</h2>
@@ -30,7 +30,7 @@ const AppRouter: React.FC = () => {
       />
       <Route
         path="/sessoes/cadastro"
-        element={<MainLayout><PlaceholderPage title="Cadastro de Sessões" /></MainLayout>}
+        element={<MainLayout><SessionManagementPage /></MainLayout>}
       />
       <Route
         path="/sessoes"
