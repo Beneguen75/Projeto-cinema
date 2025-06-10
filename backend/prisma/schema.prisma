@@ -26,3 +26,12 @@ model Movie {
   createdAt     DateTime  @default(now()) // Armazena a data de criação do registro
   updatedAt     DateTime  @updatedAt      // Armazena a data da última atualização
 }
+
+model Room {
+  id         String   @id @default(uuid())
+  nome       String   @unique
+  capacidade Int
+  tipo       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
