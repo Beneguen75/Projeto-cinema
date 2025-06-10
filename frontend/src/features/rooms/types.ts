@@ -1,6 +1,12 @@
 export interface Room {
-  id?: string; // Opcional, para identificação única
+  id: string; 
   nome: string;
   capacidade: number;
-  tipo: '2D' | '3D' | 'IMAX' | string; // Tipos predefinidos, mas permite string para outros
+  tipo: string;
+  createdAt: string;
+  updatedAt: string;
 }
+
+export type CreateRoomDto = Omit<Room, 'id' | 'createdAt' | 'updatedAt'>;
+
+export type UpdateRoomDto = Partial<CreateRoomDto>;
