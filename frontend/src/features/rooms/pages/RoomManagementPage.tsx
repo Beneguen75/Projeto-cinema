@@ -1,10 +1,9 @@
-// Em frontend/src/features/rooms/pages/RoomManagementPage.tsx
-
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Modal, Row, Spinner } from "react-bootstrap";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
-import { CreateRoomDto, Room } from "../types";
+// CORREÇÃO: Usando "import type" para importar apenas tipos.
+import type { CreateRoomDto, Room } from "../types";
 import * as roomService from "../services/room.service";
 import RoomCard from "../components/RoomCard";
 import RoomForm from "../components/RoomForm";
@@ -13,7 +12,8 @@ const RoomManagementPage = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+  // CORREÇÃO: Usando "Room | undefined" e inicializando com "undefined".
+  const [selectedRoom, setSelectedRoom] = useState<Room | undefined>(undefined);
 
   useEffect(() => {
     fetchRooms();
@@ -35,15 +35,13 @@ const RoomManagementPage = () => {
     setLoading(true);
     try {
       if (selectedRoom) {
-        // Editando
         await roomService.updateRoom(selectedRoom.id, data);
         toast.success("Sala atualizada com sucesso!");
       } else {
-        // Criando
         await roomService.createRoom(data);
         toast.success("Sala cadastrada com sucesso!");
       }
-      fetchRooms(); // Re-busca a lista para refletir as mudanças
+      fetchRooms();
       handleCloseModal();
     } catch (error) {
       toast.error(`Falha ao salvar a sala.`);
@@ -58,7 +56,7 @@ const RoomManagementPage = () => {
       try {
         await roomService.deleteRoom(id);
         toast.success("Sala excluída com sucesso!");
-        fetchRooms(); // Re-busca a lista
+        fetchRooms();
       } catch (error) {
         toast.error("Falha ao excluir a sala.");
       } finally {
@@ -67,14 +65,16 @@ const RoomManagementPage = () => {
     }
   };
 
-  const handleOpenModal = (room: Room | null = null) => {
+  // CORREÇÃO: O parâmetro opcional "room" agora é do tipo "Room" ou "undefined"
+  const handleOpenModal = (room?: Room) => {
     setSelectedRoom(room);
     setShowModal(true);
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setSelectedRoom(null);
+    // CORREÇÃO: Resetando o estado para "undefined".
+    setSelectedRoom(undefined);
   };
 
   return (
@@ -115,6 +115,7 @@ const RoomManagementPage = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* CORREÇÃO: O erro no RoomForm será resolvido ao passar o estado correto */}
           <RoomForm
             initialData={selectedRoom}
             onSubmit={handleSave}
