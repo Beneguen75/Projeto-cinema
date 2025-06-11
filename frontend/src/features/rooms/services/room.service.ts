@@ -1,7 +1,5 @@
-// Em frontend/src/features/rooms/services/room.service.ts
-
 import apiClient from "../../../services/apiClient";
-import { CreateRoomDto, Room, UpdateRoomDto } from "../types";
+import type { CreateRoomDto, Room, UpdateRoomDto } from "../types";
 
 const ROOMS_ENDPOINT = "/rooms";
 
