@@ -26,6 +26,6 @@ export class CreateMovieDto {
   dataEstreia: string;
 
   @IsOptional()
-  @IsUrl()
+  @IsString()
   posterUrl?: string;
 }
