@@ -1,7 +1,6 @@
-import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import type { CreateRoomDto } from "../types";
-import type { Room } from "../types";
+import type { CreateRoomDto, Room } from "../types";
+import styles from "./RoomForm.module.css";
 
 interface RoomFormProps {
   initialData?: Partial<Room>;
@@ -23,60 +22,69 @@ const RoomForm = ({ initialData, onSubmit, onCancel }: RoomFormProps) => {
   });
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Group className="mb-3" controlId="nome">
-        <Form.Label>Nome da Sala</Form.Label>
-        <Form.Control
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <div className="mb-3">
+        <label htmlFor="nome" className="form-label">
+          Nome da Sala
+        </label>
+        <input
+          id="nome"
           type="text"
+          className={`form-control ${errors.nome ? 'is-invalid' : ''}`}
           {...register("nome", { required: "Nome é obrigatório" })}
-          isInvalid={!!errors.nome}
         />
-        <Form.Control.Feedback type="invalid">
-          {errors.nome?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
+        {errors.nome && (
+          <div className="invalid-feedback">{errors.nome.message}</div>
+        )}
+      </div>
 
-      <Form.Group className="mb-3" controlId="capacidade">
-        <Form.Label>Capacidade</Form.Label>
-        <Form.Control
+      <div className="mb-3">
+        <label htmlFor="capacidade" className="form-label">
+          Capacidade
+        </label>
+        <input
+          id="capacidade"
           type="number"
-          {...register("capacidade", { 
+          className={`form-control ${errors.capacidade ? 'is-invalid' : ''}`}
+          {...register("capacidade", {
             required: "Capacidade é obrigatória",
             valueAsNumber: true,
-            min: { value: 1, message: "Capacidade deve ser maior que 0" }
+            min: { value: 1, message: "Capacidade deve ser maior que 0" },
           })}
-          isInvalid={!!errors.capacidade}
         />
-        <Form.Control.Feedback type="invalid">
-          {errors.capacidade?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
+        {errors.capacidade && (
+          <div className="invalid-feedback">{errors.capacidade.message}</div>
+        )}
+      </div>
 
-      <Form.Group className="mb-3" controlId="tipo">
-        <Form.Label>Tipo</Form.Label>
-        <Form.Select
+      <div className="mb-3">
+        <label htmlFor="tipo" className="form-label">
+          Tipo
+        </label>
+        <select
+          id="tipo"
+          className={`form-select ${errors.tipo ? 'is-invalid' : ''}`}
           {...register("tipo", { required: "Tipo é obrigatório" })}
-          isInvalid={!!errors.tipo}
         >
           <option value="">Selecione o tipo</option>
           <option value="2D">2D</option>
           <option value="3D">3D</option>
           <option value="IMAX">IMAX</option>
-        </Form.Select>
-        <Form.Control.Feedback type="invalid">
-          {errors.tipo?.message}
-        </Form.Control.Feedback>
-      </Form.Group>
-
-      <div className="d-flex justify-content-end gap-2">
-        <Button variant="secondary" onClick={onCancel}>
-          Cancelar
-        </Button>
-        <Button variant="primary" type="submit">
-          Salvar
-        </Button>
+        </select>
+        {errors.tipo && (
+          <div className="invalid-feedback">{errors.tipo.message}</div>
+        )}
       </div>
-    </Form>
+
+      <div className="d-flex justify-content-end gap-2 mt-4">
+        <button type="button" className="btn btn-secondary" onClick={onCancel}>
+          Cancelar
+        </button>
+        <button type="submit" className="btn btn-primary">
+          Salvar
+        </button>
+      </div>
+    </form>
   );
 };
 
