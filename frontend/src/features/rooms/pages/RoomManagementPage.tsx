@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { Button, Col, Container, Modal, Row, Spinner } from "react-bootstrap";
-import { toast } from "react-hot-toast";
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
-// CORREÇÃO: Usando "import type" para importar apenas tipos.
-import type { CreateRoomDto, Room } from "../types";
-import * as roomService from "../services/room.service";
-import RoomCard from "../components/RoomCard";
-import RoomForm from "../components/RoomForm";
+import styles from './RoomManagementPage.module.css'; 
+import type { CreateRoomDto, Room } from '../types';
+import * as roomService from '../services/room.service';
+
+import RoomCard from '../components/RoomCard';
+import RoomForm from '../components/RoomForm';
+import { Modal } from '../../../components/modal/modal';
 
 const RoomManagementPage = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // CORREÇÃO: Usando "Room | undefined" e inicializando com "undefined".
   const [selectedRoom, setSelectedRoom] = useState<Room | undefined>(undefined);
 
   useEffect(() => {
@@ -20,52 +20,51 @@ const RoomManagementPage = () => {
   }, []);
 
   const fetchRooms = async () => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const roomsData = await roomService.getAllRooms();
       setRooms(roomsData);
     } catch (error) {
-      toast.error("Falha ao buscar as salas.");
+      toast.error('Falha ao buscar as salas.');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   const handleSave = async (data: CreateRoomDto) => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       if (selectedRoom) {
         await roomService.updateRoom(selectedRoom.id, data);
-        toast.success("Sala atualizada com sucesso!");
+        toast.success('Sala atualizada com sucesso!');
       } else {
         await roomService.createRoom(data);
-        toast.success("Sala cadastrada com sucesso!");
+        toast.success('Sala cadastrada com sucesso!');
       }
       fetchRooms();
       handleCloseModal();
     } catch (error) {
       toast.error(`Falha ao salvar a sala.`);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm("Tem certeza que deseja excluir esta sala?")) {
-      setLoading(true);
+    if (window.confirm('Tem certeza que deseja excluir esta sala?')) {
+      setIsLoading(true);
       try {
         await roomService.deleteRoom(id);
-        toast.success("Sala excluída com sucesso!");
+        toast.success('Sala excluída com sucesso!');
         fetchRooms();
       } catch (error) {
-        toast.error("Falha ao excluir a sala.");
+        toast.error('Falha ao excluir a sala.');
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     }
   };
 
-  // CORREÇÃO: O parâmetro opcional "room" agora é do tipo "Room" ou "undefined"
   const handleOpenModal = (room?: Room) => {
     setSelectedRoom(room);
     setShowModal(true);
@@ -73,57 +72,50 @@ const RoomManagementPage = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    // CORREÇÃO: Resetando o estado para "undefined".
     setSelectedRoom(undefined);
   };
 
   return (
-    <Container className="my-5">
-      <h1 className="text-center mb-4">Gerenciamento de Salas</h1>
-      <div className="text-center mb-4">
-        <Button variant="primary" onClick={() => handleOpenModal()}>
+    <div className={styles.pageContainer}> {/* Aplica a classe do CSS Module */}
+      <div className={styles.pageHeader}>
+        <h1 className={styles.pageTitle}>Gerenciamento de Salas</h1>
+        <button className="btn btn-primary" onClick={() => handleOpenModal()}>
           Cadastrar Nova Sala
-        </Button>
+        </button>
       </div>
 
-      {loading && (
-        <div className="text-center">
-          <Spinner animation="border" role="status">
+      {isLoading ? (
+        <div className="d-flex justify-content-center">
+          <div className="spinner-border" role="status">
             <span className="visually-hidden">Carregando...</span>
-          </Spinner>
+          </div>
         </div>
-      )}
-
-      {!loading && (
-        <Row>
+      ) : (
+        <div className="row">
           {rooms.map((room) => (
-            <Col key={room.id} md={6} lg={4} className="mb-4">
+            <div key={room.id} className="col-md-6 col-lg-4 mb-4">
               <RoomCard
                 room={room}
                 onEdit={() => handleOpenModal(room)}
                 onDelete={() => handleDelete(room.id)}
               />
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       )}
 
-      <Modal show={showModal} onHide={handleCloseModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            {selectedRoom ? "Editar Sala" : "Cadastrar Sala"}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* CORREÇÃO: O erro no RoomForm será resolvido ao passar o estado correto */}
-          <RoomForm
-            initialData={selectedRoom}
-            onSubmit={handleSave}
-            onCancel={handleCloseModal}
-          />
-        </Modal.Body>
+      <Modal
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        title={selectedRoom ? 'Editar Sala' : 'Cadastrar Sala'}
+      >
+        <RoomForm
+          initialData={selectedRoom}
+          onSubmit={handleSave}
+          onCancel={handleCloseModal}
+        />
       </Modal>
-    </Container>
+    </div>
   );
 };
 
