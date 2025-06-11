@@ -10,10 +10,16 @@ export class MoviesService {
 
   // --- Método para CRIAR um novo filme ---
   create(createMovieDto: CreateMovieDto) {
-    return this.prisma.movie.create({
-      data: createMovieDto, // Os dados vêm do DTO validado
-    });
-  }
+  // Desestruturamos o DTO para poder manipular a data
+  const { dataEstreia, ...restOfDto } = createMovieDto;
+
+  return this.prisma.movie.create({
+    data: {
+      ...restOfDto, // Mantém todos os outros dados
+      dataEstreia: new Date(dataEstreia), // <-- Converte a string de data para um objeto Date
+    },
+  });
+}
 
   // --- Método para BUSCAR TODOS os filmes ---
   findAll() {
@@ -34,14 +40,22 @@ export class MoviesService {
 
   // --- Método para ATUALIZAR um filme pelo ID ---
   async update(id: string, updateMovieDto: UpdateMovieDto) {
-    // Primeiro, verifica se o filme existe
-    await this.findOne(id);
+  await this.findOne(id);
 
-    return this.prisma.movie.update({
-      where: { id },
-      data: updateMovieDto, // Os dados para atualização vêm do DTO
-    });
+  // Desestrutura para tratar a data, se ela foi enviada
+  const { dataEstreia, ...restOfDto } = updateMovieDto;
+
+  // Cria o objeto de dados, convertendo a data apenas se ela existir
+  const dataToUpdate: any = { ...restOfDto };
+  if (dataEstreia) {
+    dataToUpdate.dataEstreia = new Date(dataEstreia);
   }
+
+  return this.prisma.movie.update({
+    where: { id },
+    data: dataToUpdate, // Usa os dados tratados
+  });
+}
 
   // --- Método para REMOVER um filme pelo ID ---
   async remove(id: string) {
