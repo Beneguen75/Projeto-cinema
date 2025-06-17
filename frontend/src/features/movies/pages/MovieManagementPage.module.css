@@ -1,12 +1,11 @@
-.pageContainer { /* Ou .pageWrapper, mantenha o nome consistente com o que você usa no JSX */
-  padding: 1.5rem; /* Adiciona espaçamento nas laterais e em cima/baixo */
-  max-width: 1200px; /* Define uma largura máxima para o conteúdo */
-  margin-left: auto; /* Centraliza o container na tela */
-  margin-right: auto; /* Centraliza o container na tela */
-  width: 100%; /* Importante para o padding e margin: auto funcionarem bem */
+.pageContainer { 
+  padding: 1.5rem; 
+  max-width: 1200px;
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100%; 
 }
 
-/* Seus outros estilos como .pageHeader, .pageTitle, .addButton permanecem aqui */
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -23,5 +22,5 @@
 }
 
 .addButton {
-  /* Estilos para o botão */
+  
 }

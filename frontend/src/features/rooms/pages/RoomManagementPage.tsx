@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-
-import styles from './RoomManagementPage.module.css'; 
+import styles from './RoomManagementPage.module.css';
 import type { CreateRoomDto, Room } from '../types';
-import * as roomService from '../services/room.service';
-
+import * as roomService from '../../rooms/services/room.service'; 
 import RoomCard from '../components/RoomCard';
 import RoomForm from '../components/RoomForm';
 import { Modal } from '../../../components/modal/modal';
@@ -22,7 +20,7 @@ const RoomManagementPage = () => {
   const fetchRooms = async () => {
     setIsLoading(true);
     try {
-      const roomsData = await roomService.getAllRooms();
+      const roomsData = await roomService.getAllRooms(); 
       setRooms(roomsData);
     } catch (error) {
       toast.error('Falha ao buscar as salas.');
@@ -76,7 +74,7 @@ const RoomManagementPage = () => {
   };
 
   return (
-    <div className={styles.pageContainer}> {/* Aplica a classe do CSS Module */}
+    <div className={styles.pageContainer}>
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>Gerenciamento de Salas</h1>
         <button className="btn btn-primary" onClick={() => handleOpenModal()}>
@@ -91,17 +89,24 @@ const RoomManagementPage = () => {
           </div>
         </div>
       ) : (
-        <div className="row">
-          {rooms.map((room) => (
-            <div key={room.id} className="col-md-6 col-lg-4 mb-4">
-              <RoomCard
-                room={room}
-                onEdit={() => handleOpenModal(room)}
-                onDelete={() => handleDelete(room.id)}
-              />
-            </div>
-          ))}
-        </div>
+        <>
+          <h2 className="mt-5 mb-3">Salas Cadastradas</h2>
+          <div className="row">
+            {rooms.length > 0 ? (
+              rooms.map((room) => (
+                <div key={room.id} className="col-md-6 col-lg-4 mb-4">
+                  <RoomCard
+                    room={room}
+                    onEdit={() => handleOpenModal(room)}
+                    onDelete={() => handleDelete(room.id)}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>Nenhuma sala cadastrada. Clique em "Cadastrar Nova Sala" para começar.</p>
+            )}
+          </div>
+        </>
       )}
 
       <Modal

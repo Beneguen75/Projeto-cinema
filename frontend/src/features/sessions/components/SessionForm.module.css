@@ -1,20 +1,4 @@
-/* frontend/src/features/sessions/components/SessionForm.module.css */
-
-.sessionForm {
-  /* Estilos para o formulário se necessário */
+.form {
+  padding: 1rem;
 }
 
-.formGroup {
-  margin-bottom: 1.25rem;
-}
-
-.formLabel {
-  font-weight: 500;
-  margin-bottom: 0.35rem;
-  display: block;
-  color: #4A5568;
-}
-
-.buttonContainer {
-  margin-top: 1.5rem;
-}

@@ -3,7 +3,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   display: flex;
-  flex-direction: row; /* Layout horizontal */
+  flex-direction: row;
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: 100%;
@@ -15,17 +15,17 @@
 }
 
 .poster {
-  width: 100px; /* Largura fixa para o poster */
+  width: 100px;
   min-width: 100px;
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
-  background-color: #f0f0f0; /* Cor de fundo caso a imagem não carregue */
+  object-fit: cover;
+  background-color: #f0f0f0;
 }
 
 .sessionInfo {
   padding: 1rem 1.25rem;
   display: flex;
   flex-direction: column;
-  flex-grow: 1; /* Faz esta área ocupar o resto do espaço */
+  flex-grow: 1;
 }
 
 .movieTitle {
@@ -39,7 +39,7 @@
 }
 
 .details {
-  flex-grow: 1; /* Ocupa o espaço entre o título e as ações */
+  flex-grow: 1;
 }
 
 .details p {
@@ -58,11 +58,11 @@
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 0.5rem; /* Menos margem, pois já há espaço no .details */
+  margin-top: 0.5rem;
 }
 
 .actions button {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* Espaço entre o ícone e o texto */
+  gap: 0.5rem;
 }

@@ -3,34 +3,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Adicionado para que ele ocupe o espaço dado pelo .content do MainLayout */
-  width: 100%; /* Ocupar toda a largura do .content do MainLayout */
+  flex-grow: 1; 
+  width: 100%; 
   padding: 2rem 1rem;
   text-align: center;
-  background: linear-gradient(135deg, #eef2f7 0%, #f8f9fa 100%); /* Seu gradiente */
+  background: linear-gradient(135deg, #eef2f7 0%, #f8f9fa 100%); 
 }
 
 .welcomeContent {
-  /* Vamos tentar um fundo branco com um pouco mais de opacidade e um desfoque sutil */
   background-color: rgba(255, 255, 255, 0.9); 
   
 
   padding: 2.5rem 2rem;
-  border-radius: 16px; /* Bordas um pouco mais arredondadas para um look mais suave */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Sombra um pouco mais difundida */
+  border-radius: 16px; 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); 
   max-width: 750px;
   width: 100%;
   
-  /* O backdrop-filter é opcional e depende do suporte do navegador.
-     Pode deixar ou remover se não estiver vendo efeito ou se causar problemas. */
+  
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .welcomeContent:hover {
-  transform: translateY(-5px); /* Levanta um pouco o card */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18); /* Sombra um pouco mais pronunciada no hover */
+  transform: translateY(-5px); 
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18); 
 }
 
 .title {
@@ -55,63 +53,59 @@
   margin-bottom: 0;
 }
 
-.decorativeImage { /* Estilo para a imagem, caso decida usá-la */
-  max-width: 120px; /* Deixa a imagem menor e mais sutil */
+.decorativeImage { 
+  max-width: 120px;
   margin-bottom: 1.5rem;
   opacity: 0.8;
 }
 
 .textBlock {
-  margin-bottom: 2.5rem; /* Espaço abaixo do bloco de texto */
+  margin-bottom: 2.5rem; 
 }
 
 .actionButtons {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  margin-top: 2.5rem; /* Um pouco mais de espaço acima dos botões */
+  margin-top: 2.5rem; 
 }
 
 .actionButton {
-  background-color: transparent; /* Fundo transparente inicialmente */
-  border: 2px solid; /* Borda sólida, cor será definida por classes modificadoras */
-  /* A cor do texto também será definida por classes modificadoras */
-  padding: 0.75rem 1.25rem; /* Ajuste o padding conforme necessário */
-  font-size: 0.9rem; /* Fonte um pouco menor para acomodar ícone */
-  font-weight: 600; /* Texto do botão um pouco mais forte */
-  border-radius: 50px; /* Formato "pill" */
+  background-color: transparent; 
+  border: 2px solid; 
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem; 
+  font-weight: 600; 
+  border-radius: 50px; 
   text-decoration: none;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem; /* Espaço entre o ícone e o texto */
+  gap: 0.6rem;
 }
 
 .buttonIcon {
-  font-size: 1.1em; /* Tamanho do ícone relativo ao texto do botão */
-  /* margin-right: 0.5rem; /* Alternativa ao 'gap' no .actionButton */
+  font-size: 1.1em; 
 }
 
 .actionButton:hover {
-  color: #fff; /* Texto branco no hover para a maioria dos botões */
-  transform: translateY(-3px) scale(1.03); /* Efeito de levantar e aumentar um pouco */
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08); /* Sombra mais elaborada */
+  color: #fff; 
+  transform: translateY(-3px) scale(1.03); 
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Cores específicas para cada botão (borda e texto, e fundo no hover) */
 .filmesButton {
-  border-color: #3498db; /* Azul */
+  border-color: #3498db; 
   color: #3498db;
 }
 .filmesButton:hover {
   background-color: #3498db;
-  /* color: #fff; Já definido no .actionButton:hover */
 }
 
 .salasButton {
-  border-color: #2ecc71; /* Verde */
+  border-color: #2ecc71; 
   color: #2ecc71;
 }
 .salasButton:hover {
@@ -119,30 +113,28 @@
 }
 
 .sessoesButton {
-  border-color: #f1c40f; /* Amarelo */
+  border-color: #f1c40f; 
   color: #f1c40f;
 }
 .sessoesButton:hover {
   background-color: #f1c40f;
-  color: #333; /* Texto escuro para contraste com fundo amarelo */
+  color: #333; 
 }
 
 .ingressosButton {
-  border-color: #e74c3c; /* Vermelho/Laranja */
+  border-color: #e74c3c; 
   color: #e74c3c;
 }
 .ingressosButton:hover {
   background-color: #e74c3c;
 }
 
-/* Media Query para telas menores (pode precisar de ajustes) */
 @media (max-width: 768px) {
-  /* ... (estilos responsivos anteriores para .welcomeContent, .title, .subtitle) ... */
   .actionButtons {
-    grid-template-columns: 1fr; /* Botões em uma única coluna */
-    gap: 0.75rem; /* Espaço menor entre botões empilhados */
+    grid-template-columns: 1fr; 
+    gap: 0.75rem; 
   }
   .actionButton {
-    padding: 0.8rem 1rem; /* Ajusta padding para botões empilhados */
+    padding: 0.8rem 1rem; 
   }
 }

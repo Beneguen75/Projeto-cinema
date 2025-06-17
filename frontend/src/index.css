@@ -1,9 +1,9 @@
 html,
 body,
-#root { /* #root é o ID padrão do div onde o React é montado */
+#root { 
   height: 100%;
-  margin: 0; /* Remove margens padrão */
-  padding: 0; /* Remove paddings padrão */
+  margin: 0; 
+  padding: 0; 
 }
 
 body {
@@ -12,8 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* O background-color do body pode ser uma cor de fallback ou a cor inicial do gradiente */
-  background-color: #f7f7f7; /* Exemplo, se o gradiente começar com essa cor */
+  
+  background-color: #f7f7f7; 
 }
 
-/* ... (outros estilos globais) ... */

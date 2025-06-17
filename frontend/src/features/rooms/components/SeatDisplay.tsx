@@ -1,10 +1,9 @@
 import React from 'react';
-import styles from './SeatDisplay.module.css'; // Vamos criar este CSS Module a seguir
+import styles from './SeatDisplay.module.css'; 
 
 interface Seat {
   id: string;
   label: string;
-  // status: 'available' | 'occupied' | 'selected'; // Para uso futuro (venda de ingressos)
 }
 
 interface SeatDisplayProps {
@@ -14,7 +13,7 @@ interface SeatDisplayProps {
 
 const SeatDisplay: React.FC<SeatDisplayProps> = ({ 
   capacidade, 
-  assentosPorFileira = 10 // Padrão de 10 assentos por fileira, ajuste conforme preferir
+  assentosPorFileira = 10 
 }) => {
   const seats: Seat[] = [];
   const letrasFileira = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -29,8 +28,8 @@ const SeatDisplay: React.FC<SeatDisplayProps> = ({
     letraDaFileira = `X${letrasFileira[fileiraIndex - letrasFileira.length]}`;
   }
   
-  const numeroAssento = (i % assentosPorFileira) + 1; // Esta é a variável correta para o número
-  const label = `${letraDaFileira}${numeroAssento}`; // Usando numeroAssento
+  const numeroAssento = (i % assentosPorFileira) + 1; 
+  const label = `${letraDaFileira}${numeroAssento}`; 
   
   seats.push({ id: label, label });
   }
@@ -39,17 +38,14 @@ const SeatDisplay: React.FC<SeatDisplayProps> = ({
     <div className={styles.seatDisplayContainer}>
       <div 
         className={styles.seatGrid}
-        // Define dinamicamente o número de colunas para o grid CSS
         style={{ gridTemplateColumns: `repeat(${Math.min(capacidade, assentosPorFileira)}, auto)` }}
       >
         {seats.map(seat => (
           <div 
             key={seat.id} 
             className={styles.seat} 
-            title={seat.label} // Mostra o label no hover
+            title={seat.label}
           >
-            {/* Podemos mostrar o label ou apenas a forma do assento,
-                ou o label se o assento for grande o suficiente */}
             {seat.label}
           </div>
         ))}

@@ -1,16 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './HomePage.module.css';
-// Importando ícones do Font Awesome (parte do react-icons)
 import { FaFilm, FaDoorOpen, FaCalendarAlt, FaTicketAlt } from 'react-icons/fa';
 
-// const cinemaImageUrl = "/images/cinema-home-icon.png";
 
 const HomePage: React.FC = () => {
   return (
     <div className={styles.homePageContainer}>
       <div className={styles.welcomeContent}>
-        {/* {cinemaImageUrl && <img src={cinemaImageUrl} alt="Ícone Cinema" className={styles.decorativeImage} />} */}
         <div className={styles.textBlock}>
           <h1 className={styles.title}>🎬 Bem-vindo ao Sistema de Gestão de Cinema</h1>
           <p className={styles.subtitle}>

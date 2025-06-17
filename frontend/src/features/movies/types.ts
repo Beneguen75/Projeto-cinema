@@ -6,5 +6,5 @@ export interface Movie {
   classificacao: string;
   duracao: number;
   dataEstreia: string;
-  posterUrl?: string; // Novo campo para a URL do cartaz
+  posterUrl?: string; 
 }

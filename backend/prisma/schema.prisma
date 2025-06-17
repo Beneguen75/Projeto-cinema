@@ -8,23 +8,22 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") // Lê a URL do banco do seu arquivo .env
+  url      = env("DATABASE_URL") 
 }
 
-// AQUI COMEÇA A DEFINIÇÃO DOS NOSSOS MODELOS
-
-// Modelo para Filmes
 model Movie {
-  id            String    @id @default(uuid()) // Chave primária, será um UUID gerado automaticamente
+  id            String    @id @default(uuid()) 
   titulo        String
   descricao     String
   genero        String
   classificacao String
-  duracao       Int       // Em minutos
-  dataEstreia   DateTime  // Armazena a data (e hora, se necessário)
-  posterUrl     String?   // O '?' indica que este campo é opcional
-  createdAt     DateTime  @default(now()) // Armazena a data de criação do registro
-  updatedAt     DateTime  @updatedAt      // Armazena a data da última atualização
+  duracao       Int       
+  dataEstreia   DateTime  
+  posterUrl     String?   
+  createdAt     DateTime  @default(now()) 
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]   
 }
 
 model Room {
@@ -34,6 +33,8 @@ model Room {
   tipo       String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+
+  sessions      Session[]
 }
 
 model Session {
@@ -49,6 +50,18 @@ model Session {
   roomId String
   room   Room   @relation(fields: [roomId], references: [id], onDelete: Cascade)
 
+  tickets   Ticket[]
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Ticket {
+  id         String   @id @default(uuid())
+  seatNumber String 
+
+  sessionId String
+  session   Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  createdAt  DateTime @default(now())
 }

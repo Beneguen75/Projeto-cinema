@@ -1,13 +1,12 @@
-/* Adicione esta classe se ainda não existir, ou adapte-a */
 .pageContainer {
-  padding: 1.5rem; /* Espaçamento interno nas laterais, em cima e embaixo */
-  max-width: 1200px; /* Largura máxima do conteúdo da página */
-  margin-left: auto; /* Centraliza o container se a tela for maior que max-width */
-  margin-right: auto; /* Centraliza o container se a tela for maior que max-width */
-  width: 100%; /* Garante que o container ocupe a largura disponível para o padding funcionar */
+  padding: 1.5rem; 
+  max-width: 1200px; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: 100%; 
 }
 
-/* Seus estilos existentes para o cabeçalho devem permanecer aqui */
+
 .pageHeader {
   display: flex;
   justify-content: space-between;
@@ -21,8 +20,4 @@
   font-size: 2rem;
   font-weight: 600;
   color: #343a40;
-}
-
-.addButton {
-  /* Estilos para o botão "Nova Sala", se houver */
 }

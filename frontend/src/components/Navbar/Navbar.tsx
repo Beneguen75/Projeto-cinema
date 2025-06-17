@@ -1,15 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-// Se você criar um Navbar.module.css para estilos específicos da Navbar,
-// descomente a linha abaixo:
-// import styles from './Navbar.module.css';
+import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
       <div className="container-fluid">
-        <Link className="navbar-brand fw-bold" to="/">🎬 Cinema</Link>
+        <NavLink className="navbar-brand fw-bold" to="/">🎬 Cinema</NavLink>
         <button
           className="navbar-toggler"
           type="button"
@@ -24,23 +20,22 @@ const Navbar: React.FC = () => {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/">Início</Link>
+              <NavLink className="nav-link" to="/" end>Início</NavLink>
             </li>
             <li className="nav-item">
-              {/* Atualize estes links conforme as rotas das suas features */}
-              <Link className="nav-link" to="/filmes/cadastro">Cadastro de Filmes</Link>
+              <NavLink className="nav-link" to="/filmes/cadastro">Filmes</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/salas/cadastro">Cadastro de Salas</Link>
+              <NavLink className="nav-link" to="/salas/cadastro">Salas</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/sessoes/cadastro">Cadastro de Sessões</Link>
+              <NavLink className="nav-link" to="/sessoes/cadastro">Sessões</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/sessoes">Listar Sessões</Link>
+              <NavLink className="nav-link" to="/sessoes" end>Em Cartaz</NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/ingressos/venda">Ingressos</Link>
+              <NavLink className="nav-link" to="/ingressos/venda">Ingressos</NavLink>
             </li>
           </ul>
         </div>

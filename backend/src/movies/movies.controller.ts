@@ -3,35 +3,32 @@ import { MoviesService } from './movies.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
 
-@Controller('movies') // Define que este controller cuidará da rota base '/movies'
+@Controller('movies') 
 export class MoviesController {
-  // Injeta o MoviesService no construtor
   constructor(private readonly moviesService: MoviesService) {}
 
-  @Post() // Mapeia para: POST /movies
+  @Post() 
   create(@Body() createMovieDto: CreateMovieDto) {
-    // O @Body() extrai o corpo da requisição e o DTO valida os dados
     return this.moviesService.create(createMovieDto);
   }
 
-  @Get() // Mapeia para: GET /movies
+  @Get() 
   findAll() {
     return this.moviesService.findAll();
   }
 
-  @Get(':id') // Mapeia para: GET /movies/:id (ex: /movies/123-abc)
+  @Get(':id') 
   findOne(@Param('id') id: string) {
-    // O @Param('id') extrai o parâmetro 'id' da URL
     return this.moviesService.findOne(id);
   }
 
-  @Patch(':id') // Mapeia para: PATCH /movies/:id
+  @Patch(':id') 
   update(@Param('id') id: string, @Body() updateMovieDto: UpdateMovieDto) {
     return this.moviesService.update(id, updateMovieDto);
   }
 
-  @Delete(':id') // Mapeia para: DELETE /movies/:id
-  @HttpCode(HttpStatus.NO_CONTENT) // Define que o status de sucesso será 204 No Content
+  @Delete(':id') 
+  @HttpCode(HttpStatus.NO_CONTENT) 
   remove(@Param('id') id: string) {
     return this.moviesService.remove(id);
   }

@@ -1,13 +1,12 @@
-/* frontend/src/features/rooms/components/RoomCard.module.css */
 .roomCard {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
   overflow: hidden;
   background-color: #fff;
-  display: flex; /* Permite que o card use flexbox para seus filhos */
-  flex-direction: column; /* Empilha os filhos do card verticalmente */
-  height: 100%; /* Opcional, mas ajuda se Bootstrap h-100 não for suficiente */
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
 }
 
 .roomCard:hover {
@@ -17,9 +16,9 @@
 
 .roomCardBody {
   padding: 1.25rem;
-  display: flex; /* Adicionado para controle interno */
-  flex-direction: column; /* Adicionado */
-  flex-grow: 1; /* Faz o corpo do card ocupar o espaço disponível */
+  display: flex; 
+  flex-direction: column; 
+  flex-grow: 1; 
 }
 
 .roomCardTitle {
@@ -59,7 +58,7 @@
 .roomCardActions {
   border-top: 1px solid #f0f0f0;
   padding-top: 1rem !important;
-  margin-top: auto !important; /* Empurra os botões para o final do card */
+  margin-top: auto !important;
 }
 
 .actionButton {

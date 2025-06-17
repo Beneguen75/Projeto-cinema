@@ -1,11 +1,11 @@
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Faz o layout ocupar no mínimo toda a altura da tela */
+  min-height: 100vh; 
 }
 
 .content {
-  flex-grow: 1; /* Faz esta seção (main) crescer para ocupar o espaço disponível */
-  display: flex; /* Para que o .homePageContainer dentro dele possa centralizar */
-  flex-direction: column; /* Se o .homePageContainer também for flex column */
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
 }

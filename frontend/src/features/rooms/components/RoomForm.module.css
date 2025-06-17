@@ -1,9 +1,8 @@
 .roomForm {
-  /* padding: 1.5rem; /* Se precisar de mais espaçamento interno no form */
 }
 
 .formGroup {
-  margin-bottom: 1.25rem; /* Espaço entre os grupos de label/input */
+  margin-bottom: 1.25rem; 
 }
 
 .formLabel {
@@ -13,20 +12,14 @@
   color: #4A5568;
 }
 
-/* Se quiser adicionar estilos customizados para os inputs/selects do formulário de salas: */
-.formControl, /* Classe genérica para inputs e selects */
+.formControl, 
 .formSelect {
-  /* border: 1px solid #ced4da; */
-  /* border-radius: 0.25rem; */
-  /* padding: 0.5rem 0.75rem; */
 }
 
 .formControl:focus,
 .formSelect:focus {
-  /* border-color: #80bdff; */
-  /* box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); */
 }
 
 .buttonContainer {
-  margin-top: 1.5rem; /* Espaço acima dos botões */
+  margin-top: 1.5rem;
 }

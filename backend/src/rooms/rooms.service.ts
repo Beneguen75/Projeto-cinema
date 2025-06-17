@@ -25,7 +25,7 @@ export class RoomsService {
   }
 
   async update(id: string, updateRoomDto: UpdateRoomDto): Promise<Room> {
-    await this.findOne(id); // Garante que a sala existe antes de tentar atualizar
+    await this.findOne(id); 
     return this.prisma.room.update({
       where: { id },
       data: updateRoomDto,
@@ -33,7 +33,7 @@ export class RoomsService {
   }
 
   async remove(id: string): Promise<Room> {
-    await this.findOne(id); // Garante que a sala existe antes de tentar remover
+    await this.findOne(id); 
     return this.prisma.room.delete({ where: { id } });
   }
 }

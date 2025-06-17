@@ -1,6 +1,6 @@
 import React, { useState, } from 'react';
 import type { Movie } from '../types';
-import styles from './MovieForm.module.css'; // <--- IMPORTE O CSS MODULE AQUI
+import styles from './MovieForm.module.css'; 
 
 interface MovieFormProps {
   initialData?: Partial<Movie>;
@@ -19,7 +19,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  // ... (sua função validateForm permanece a mesma, mas pode adicionar validação para posterUrl se desejar)
   const validateForm = (): boolean => {
      const newErrors: Record<string, string> = {};
      if (!titulo.trim()) newErrors.titulo = "Título é obrigatório.";
@@ -39,10 +38,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
          newErrors.dataEstreia = "A data de estreia não pode ser anterior ao dia atual.";
        }
      }
-     // Exemplo de validação para posterUrl (opcional)
-     // if (posterUrl && !posterUrl.match(/^(\/|https?:\/\/)/i)) {
-     //   newErrors.posterUrl = "URL do cartaz inválida. Deve ser um caminho local (ex: /cartazes/img.jpg) ou uma URL http(s).";
-     // }
 
      setErrors(newErrors);
      return Object.keys(newErrors).length === 0;
@@ -67,23 +62,17 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
   };
 
   return (
-    // Aplica a classe do CSS Module ao form.
-    // Mantemos as classes do Bootstrap para estrutura base.
     <form onSubmit={handleSubmit} className={`${styles.movieForm} bg-white p-4 rounded shadow-sm`}>
       {Object.keys(errors).length > 0 && (
-        // Aplica classe do CSS Module para o sumário de erros
         <div className={`${styles.formErrorSummary} alert alert-danger mb-3`}>
           Por favor, corrija os erros indicados.
         </div>
       )}
 
-      {/* Exemplo de como aplicar classes do module a um form group e label */}
       <div className={`${styles.formGroup} mb-3`}>
         <label htmlFor="titulo" className={`${styles.formLabel} form-label`}>Título</label>
         <input
           type="text"
-          // Se você definiu .formControl no seu module.css e quer usá-lo em vez do Bootstrap:
-          // className={`${styles.formControl} ${errors.titulo ? 'is-invalid' : ''}`}
           className={`form-control ${errors.titulo ? 'is-invalid' : ''}`}
           id="titulo"
           value={titulo}
@@ -106,8 +95,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
         {errors.descricao && <div className="invalid-feedback">{errors.descricao}</div>}
       </div>
 
-     {/* Aplique styles.formGroup e styles.formLabel aos outros campos também... */}
-     {/* Gênero */}
      <div className={`${styles.formGroup} mb-3`}>
          <label htmlFor="genero" className={`${styles.formLabel} form-label`}>Gênero</label>
          <select
@@ -125,7 +112,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
          {errors.genero && <div className="invalid-feedback">{errors.genero}</div>}
      </div>
 
-     {/* Classificação */}
      <div className={`${styles.formGroup} mb-3`}>
          <label htmlFor="classificacao" className={`${styles.formLabel} form-label`}>Classificação Indicativa</label>
          <select
@@ -142,7 +128,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
          {errors.classificacao && <div className="invalid-feedback">{errors.classificacao}</div>}
      </div>
 
-     {/* Duração */}
      <div className={`${styles.formGroup} mb-3`}>
          <label htmlFor="duracao" className={`${styles.formLabel} form-label`}>Duração (minutos)</label>
          <input
@@ -152,7 +137,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
          {errors.duracao && <div className="invalid-feedback">{errors.duracao}</div>}
      </div>
 
-     {/* Data de Estreia */}
      <div className={`${styles.formGroup} mb-3`}>
          <label htmlFor="data-estreia" className={`${styles.formLabel} form-label`}>Data de Estreia</label>
          <input
@@ -162,7 +146,6 @@ const MovieForm: React.FC<MovieFormProps> = ({ initialData, onSubmit, onCancel }
          {errors.dataEstreia && <div className="invalid-feedback">{errors.dataEstreia}</div>}
      </div>
 
-     {/* URL do Cartaz */}
      <div className={`${styles.formGroup} mb-3`}>
          <label htmlFor="posterUrl" className={`${styles.formLabel} form-label`}>URL do Cartaz (Poster)</label>
          <input

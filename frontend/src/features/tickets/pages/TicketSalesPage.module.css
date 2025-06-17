@@ -1,0 +1,53 @@
+
+.seatingContainer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.screen {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0 auto 2rem auto;
+  width: 80%;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.seatSample {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+}
+
+.available { background-color: #4CAF50; }
+.selected { background-color: #2196F3; }
+.occupied { background-color: #f44336; }
+
+.purchaseSection {
+  margin-top: 2rem;
+  text-align: center;
+}
+.purchaseSection p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}

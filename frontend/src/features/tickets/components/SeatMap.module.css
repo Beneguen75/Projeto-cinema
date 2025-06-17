@@ -1,0 +1,36 @@
+.seatMap {
+  display: grid;
+  /* Ajusta o grid para ter 10 colunas, como definido no componente */
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  margin: 2rem auto;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.seat {
+  background-color: #4CAF50; /* Verde para disponível */
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.seat:not(.occupied):hover {
+  background-color: #45a049;
+}
+
+.occupied {
+  background-color: #f44336; 
+  cursor: not-allowed;
+}
+
+.selected {
+  background-color: #2196F3; 
+}

@@ -14,12 +14,12 @@ export const createRoom = async (data: CreateRoomDto): Promise<Room> => {
 };
 
 export const updateRoom = async (id: string, data: UpdateRoomDto): Promise<Room> => {
-  const url = `${ROOMS_ENDPOINT}/${id}`; // Tornando o uso de 'id' mais explícito
+  const url = `${ROOMS_ENDPOINT}/${id}`; 
   const response = await apiClient.patch<Room>(url, data);
   return response.data;
 };
 
 export const deleteRoom = async (id: string): Promise<void> => {
-  const url = `${ROOMS_ENDPOINT}/${id}`; // Tornando o uso de 'id' mais explícito
+  const url = `${ROOMS_ENDPOINT}/${id}`;
   await apiClient.delete(url);
 };

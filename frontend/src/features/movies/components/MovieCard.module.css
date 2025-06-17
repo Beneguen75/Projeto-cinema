@@ -1,19 +1,18 @@
 .movieCard {
-  border: 1px solid #e0e0e0; /* Borda sutil */
-  border-radius: 8px; /* Bordas mais arredondadas */
+  border: 1px solid #e0e0e0; 
+  border-radius: 8px; 
   transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
-  overflow: hidden; /* Garante que a imagem não ultrapasse as bordas arredondadas */
+  overflow: hidden; 
 }
 
 .movieCard:hover {
-  transform: translateY(-5px); /* Efeito de levantar sutilmente */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important; /* Sombra mais pronunciada */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
 }
 
 .movieCardImgTop {
-  height: 300px; /* Altura fixa para a imagem do cartaz */
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
-  /* Não precisa de border-radius aqui se .movieCard tem overflow: hidden */
+  height: 300px; 
+  object-fit: cover; 
 }
 
 .movieCardImgPlaceholder {
@@ -27,33 +26,32 @@
 }
 
 .movieCardBody {
-  padding: 1rem; /* Espaçamento interno do corpo do card */
+  padding: 1rem; 
 }
 
 .movieCardTitle {
-  font-size: 1.1rem; /* Tamanho um pouco maior para o título */
+  font-size: 1.1rem; 
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #333; /* Cor mais escura para o título */
+  color: #333; 
 }
 
 .movieCardText {
-  font-size: 0.85rem; /* Tamanho um pouco menor para os detalhes */
+  font-size: 0.85rem; 
   color: #555;
   margin-bottom: 0.4rem;
 }
 
 .movieCardText strong {
-  color: #222; /* Destaque para os labels */
+  color: #222;
 }
 
 .movieCardActions {
-  border-top: 1px solid #f0f0f0; /* Linha sutil acima dos botões */
-  padding-top: 0.75rem !important; /* !important para sobrescrever o pt-2 do Bootstrap se necessário */
-  margin-top: 0.75rem !important; /* Espaçamento acima dos botões */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 0.75rem !important; 
+  margin-top: 0.75rem !important; 
 }
 
 .actionButton {
-  font-size: 0.8rem; /* Botões um pouco menores */
-  /* Adicione mais estilos customizados para os botões se desejar */
+  font-size: 0.8rem; 
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Movie } from '../types';
-import styles from './MovieCard.module.css'; // Vamos criar este arquivo CSS Module a seguir
+import styles from './MovieCard.module.css';
 
 interface MovieCardProps {
   movie: Movie;
@@ -9,25 +9,19 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, onEdit, onDelete }) => {
-  // Função para formatar a data, pode ser movida para um arquivo de utils no futuro
   const formatDate = (dateString: string) => {
-    // Adiciona T00:00:00 para evitar problemas com fuso horário ao converter só a data
     return new Date(dateString + 'T00:00:00').toLocaleDateString();
   };
 
   return (
-    // Usamos styles.card do nosso CSS Module.
-    // As classes do Bootstrap (card, h-100, shadow-sm) ainda podem ser usadas para estrutura base.
     <div className={`${styles.movieCard} card h-100 shadow-sm`}>
       {movie.posterUrl && (
         <img
           src={movie.posterUrl}
-          // Aplicamos uma classe do CSS Module e a classe do Bootstrap
           className={`${styles.movieCardImgTop} card-img-top`}
           alt={`Cartaz do filme ${movie.titulo}`}
         />
       )}
-      {/* Se não houver posterUrl, podemos mostrar um placeholder de cor ou um ícone genérico */}
       {!movie.posterUrl && (
          <div className={styles.movieCardImgPlaceholder}>
            <span>Sem Imagem</span>

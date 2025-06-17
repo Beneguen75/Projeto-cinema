@@ -9,7 +9,7 @@ interface RoomCardProps {
   onDelete: (roomId?: string) => void;
 }
 
-const RoomCard: React.FC<RoomCardProps> = ({ room, onEdit, onDelete }) => { // <--- REMOVA renderSeatsPlaceholder DAQUI
+const RoomCard: React.FC<RoomCardProps> = ({ room, onEdit, onDelete }) => { 
   return (
     <div className={`${styles.roomCard} card h-100 shadow-sm`}>
       <div className={`${styles.roomCardBody} card-body d-flex flex-column`}>
@@ -17,10 +17,8 @@ const RoomCard: React.FC<RoomCardProps> = ({ room, onEdit, onDelete }) => { // <
         <p className={styles.roomCardText}><small><strong>Tipo:</strong> {room.tipo}</small></p>
         <p className={styles.roomCardText}><small><strong>Capacidade:</strong> {room.capacidade} lugares</small></p>
 
-        {/* Renderiza o novo componente SeatDisplay */}
-        <div className={styles.seatsPlaceholderContainer}> {/* Podemos manter este container ou integrar seus estilos ao SeatDisplay.module.css */}
+        <div className={styles.seatsPlaceholderContainer}> 
           <SeatDisplay capacidade={room.capacidade} /> 
-          {/* Você pode passar assentosPorFileira aqui se quiser diferente do padrão, ex: <SeatDisplay capacidade={room.capacidade} assentosPorFileira={15} /> */}
         </div>
 
         <div className={`${styles.roomCardActions} mt-auto d-flex justify-content-end gap-2 pt-3`}>

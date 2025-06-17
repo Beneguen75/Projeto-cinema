@@ -3,17 +3,16 @@ import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './router/AppRouter';
 import './index.css';
 
-// Importações para react-toastify
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // CSS do react-toastify
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <AppRouter />
       <ToastContainer
-        position="top-right" // Posição das notificações
-        autoClose={3000} // Fecha automaticamente após 3 segundos
+        position="top-right" 
+        autoClose={3000} 
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -21,7 +20,7 @@ const App: React.FC = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light" // Ou "dark", "colored"
+        theme="light" 
       />
     </BrowserRouter>
   );
